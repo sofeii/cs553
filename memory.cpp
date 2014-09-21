@@ -146,7 +146,7 @@ static void *run(void* args)
         c_end = tv.tv_sec*1000000LL + tv.tv_usec;
         
         result +=c_end-c_start;
-        result_1=result;
+       // result_1=result;
         free(mem);
     }
     average=result/3.0;
@@ -221,11 +221,11 @@ int main()
             //gettimeofday(&tv, NULL);
             //c_end = tv.tv_sec*1000000LL + tv.tv_usec;
            // result=(c_end-c_start)/1000000.0;
-            cout<<"Thread"""<<j+1<<":"<<"The average time is:"<<(long)average_1/3000000.0<<"s"<<endl;
+            cout<<"Thread"""<<j+1<<":"<<"The average time is:"<<(long)average_1/1000000.0<<"s"<<endl;
             //cout<<"Average result is:"<<result<<"s"<<endl;
-           cout<<"Thread"""<<j+1<<":"<<"The throughput is:"<<CHUNK_SIZE*1000000.0/(long)average_1<<"MB/S"<<endl;
+           cout<<"Thread"""<<j+1<<":"<<"The average throughput is:"<<CHUNK_SIZE*1000000.0/(long)average_1<<"MB/S"<<endl;
             cout<<"Thread"""<<j+1<<":"<<"The latency is:"<<(long)average_1/(CHUNK_SIZE*MB*THREAD*8*1000.0)<<"MS"<<endl;
-
+            cout<<"The bandwidth is:"<<CHUNK_SIZE*1000.0*8.0/(long)average_1<<"GB"<<endl;
           //  cout<<"The block size is:1"<<l<<endl;
          // a=(long)average;
                                           }
@@ -235,7 +235,7 @@ int main()
    // cout<<"The average throughput is:"<<CHUNK_SIZE*THREAD*1000000.0/a<<"MB/S"<<endl;
     //cout<<"Latency is:"<<(double)(a/(CHUNK_SIZE*MB*THREAD*8*1000.0))<<"MS"<<endl;
     //cout<<"The block size is:1"<<l<<endl;
-
+   // cout<<"The bandwidth is:"<<CHUNK_SIZE/(long)average_1<<"GB"<<endl;
     pthread_mutex_destroy( &sum_mutex ); //注销锁
     pthread_exit( NULL );
     return 0;
